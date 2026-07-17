@@ -13,7 +13,9 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img src="/logo.png" alt="Aurora Havens" className="w-11 h-11 object-contain" />
+              <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                <img src="/logo.png" alt="Aurora Havens" className="w-9 h-9 object-contain" />
+              </div>
               <div>
                 <span className="font-display font-bold text-xl block">Aurora Havens</span>
                 <span className="text-[10px] text-gold-400/70 tracking-[0.2em] uppercase font-medium">
@@ -21,24 +23,24 @@ export function Footer() {
                 </span>
               </div>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-dark-200 mb-6 leading-relaxed">
               Africa&apos;s most trusted integrated real estate and social impact digital platform 
               where every property investment contributes directly to transforming lives.
             </p>
             <div className="space-y-3">
-              <a href="mailto:info@aurorahavens.com" className="flex items-center gap-3 text-gray-400 hover:text-gold-400 transition-colors group">
+              <a href="mailto:info@aurorahavens.com" className="flex items-center gap-3 text-dark-200 hover:text-gold-400 transition-colors group">
                 <div className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-gold-500/10 transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="text-sm">info@aurorahavens.com</span>
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-3 text-gray-400 hover:text-gold-400 transition-colors group">
+              <a href="tel:+1234567890" className="flex items-center gap-3 text-dark-200 hover:text-gold-400 transition-colors group">
                 <div className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-gold-500/10 transition-colors">
                   <Phone className="w-4 h-4" />
                 </div>
                 <span className="text-sm">+1 (234) 567-890</span>
               </a>
-              <div className="flex items-center gap-3 text-gray-400">
+              <div className="flex items-center gap-3 text-dark-200">
                 <div className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center">
                   <MapPin className="w-4 h-4" />
                 </div>
@@ -55,7 +57,7 @@ export function Footer() {
             <ul className="space-y-3">
               {FOOTER_LINKS.properties.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-400 hover:text-gold-400 transition-colors text-sm">
+                  <Link href={link.href} className="text-dark-200 hover:text-gold-400 transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -71,7 +73,7 @@ export function Footer() {
             <ul className="space-y-3">
               {FOOTER_LINKS.company.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-400 hover:text-gold-400 transition-colors text-sm">
+                  <Link href={link.href} className="text-dark-200 hover:text-gold-400 transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -87,7 +89,7 @@ export function Footer() {
             <ul className="space-y-3">
               {FOOTER_LINKS.support.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-400 hover:text-gold-400 transition-colors text-sm">
+                  <Link href={link.href} className="text-dark-200 hover:text-gold-400 transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -106,7 +108,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                   className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold-400 hover:bg-gold-500/10 transition-all duration-300"
+                   className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center text-dark-200 hover:text-gold-400 hover:bg-gold-500/10 transition-all duration-300"
                 >
                   {social.icon === 'facebook' && <Facebook className="w-4 h-4" />}
                   {social.icon === 'twitter' && <Twitter className="w-4 h-4" />}
@@ -122,10 +124,10 @@ export function Footer() {
 
       <div className="border-t border-white/10 mt-8 pt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
+          <p className="text-dark-300 text-sm">
             &copy; {new Date().getFullYear()} Aurora Havens. All rights reserved.
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-dark-300 text-sm">
             Powered by <span className="text-gold-500 font-medium">KellyFlo Technologies</span>
           </p>
         </div>

@@ -34,9 +34,9 @@ export default function HomePage() {
           <img
             src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80&fit=crop"
             alt=""
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/90 to-dark-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-900/80 via-dark-900/50 to-dark-900/30" />
         </div>
         {/* Decorative elements */}
         <div className="absolute inset-0">
