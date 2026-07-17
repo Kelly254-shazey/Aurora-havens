@@ -36,8 +36,8 @@ export function ScrollReveal({
     <motion.div
       initial={{ opacity: 0, x: offset.x, y: offset.y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: '-80px' }}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      viewport={{ once, margin: '-500px' }}
+      transition={{ duration: 1.8, delay, ease: [0.25, 0.1, 0.25, 1] }}
       className={className}
     >
       {children}
@@ -60,7 +60,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: '-80px' }}
+      viewport={{ once, margin: '-500px' }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: staggerDelay } },
@@ -87,7 +87,7 @@ export function StaggerItem({
     <motion.div
       variants={{
         hidden: { opacity: 0, x: offset.x, y: offset.y },
-        visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+        visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
       }}
       className={className}
     >
@@ -111,7 +111,7 @@ export function ParallaxSection({
       initial={{ y: speed * 100 }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 2.5, ease: 'easeOut' }}
     >
       {children}
     </motion.div>
