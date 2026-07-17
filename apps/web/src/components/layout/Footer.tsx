@@ -3,7 +3,34 @@
 
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
-import { FOOTER_LINKS } from '@aurora-havens/shared';
+
+const FOOTER_LINKS = {
+  properties: [
+    { label: 'Residential', href: '/properties?type=RESIDENTIAL' },
+    { label: 'Commercial', href: '/properties?type=COMMERCIAL' },
+    { label: 'Land', href: '/properties?type=LAND' },
+    { label: 'Luxury', href: '/properties?type=LUXURY' },
+  ],
+  company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Team', href: '/about#team' },
+    { label: 'Foundation', href: '/foundation' },
+    { label: 'Invest', href: '/invest' },
+  ],
+  support: [
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'News', href: '/news' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'How It Works', href: '/invest/how-it-works' },
+  ],
+  social: [
+    { label: 'Facebook', href: 'https://facebook.com', icon: 'facebook' },
+    { label: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+    { label: 'Instagram', href: 'https://instagram.com', icon: 'instagram' },
+    { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+    { label: 'YouTube', href: 'https://youtube.com', icon: 'youtube' },
+  ],
+};
 
 export function Footer() {
   return (

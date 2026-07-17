@@ -6,6 +6,7 @@ import {
   MapPin, Bed, Bath, Square, ArrowLeft, Heart, Share2,
   Phone, Mail, CalendarCheck, Shield, CheckCircle2, Building2,
 } from 'lucide-react';
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal';
 
 const PROPERTIES = [
   {
@@ -201,7 +202,7 @@ export default function PropertyDetailPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Image */}
-      <section className="relative h-[50vh] sm:h-[60vh] bg-dark-900 overflow-hidden">
+      <section className="relative h-[50vh] sm:h-[60vh] bg-navy-500 overflow-hidden">
         <img
           src={property.image}
           alt={property.title}
@@ -209,30 +210,34 @@ export default function PropertyDetailPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className="absolute top-4 left-4 z-10">
-          <Link href="/properties" className="inline-flex items-center gap-2 px-4 py-2 bg-dark-900/80 backdrop-blur-sm text-white text-sm font-medium rounded-xl hover:bg-dark-900 transition-colors">
+          <Link href="/properties" className="inline-flex items-center gap-2 px-4 py-2 bg-navy-500/80 backdrop-blur-sm text-white text-sm font-medium rounded-xl hover:bg-navy-500 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back
           </Link>
         </div>
         <div className="absolute top-4 right-4 z-10 flex gap-2">
-          <button className="p-2.5 bg-dark-900/80 backdrop-blur-sm text-white rounded-xl hover:bg-dark-900 transition-colors" aria-label="Save property">
+          <button className="p-2.5 bg-navy-500/80 backdrop-blur-sm text-white rounded-xl hover:bg-navy-500 transition-colors" aria-label="Save property">
             <Heart className="w-5 h-5" />
           </button>
-          <button className="p-2.5 bg-dark-900/80 backdrop-blur-sm text-white rounded-xl hover:bg-dark-900 transition-colors" aria-label="Share property">
+          <button className="p-2.5 bg-navy-500/80 backdrop-blur-sm text-white rounded-xl hover:bg-navy-500 transition-colors" aria-label="Share property">
             <Share2 className="w-5 h-5" />
           </button>
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
           <div className="max-w-7xl mx-auto">
-            {property.badge && (
-              <span className="inline-block bg-gold-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-lg mb-3">
-                {property.badge}
-              </span>
-            )}
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">{property.title}</h1>
-            <div className="flex items-center gap-2 text-white/80">
-              <MapPin className="w-4 h-4 text-gold-400" />
-              <span>{property.location}</span>
-            </div>
+            <ScrollReveal>
+              {property.badge && (
+                <span className="inline-block bg-gold-500 text-dark-900 text-xs font-bold px-3 py-1 rounded-lg mb-3">
+                  {property.badge}
+                </span>
+              )}
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">{property.title}</h1>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div className="flex items-center gap-2 text-white/80">
+                <MapPin className="w-4 h-4 text-gold-400" />
+                <span>{property.location}</span>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -244,132 +249,145 @@ export default function PropertyDetailPage() {
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Price + Stats */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Asking Price</p>
-                    <p className="text-3xl font-display font-bold text-dark-900">{property.price}</p>
-                  </div>
-                  <span className="inline-flex items-center px-3 py-1.5 bg-gold-500/10 text-gold-700 text-sm font-medium rounded-lg border border-gold-500/20">
-                    {property.type}
-                  </span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {property.beds > 0 && (
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                      <Bed className="w-5 h-5 text-gold-500" />
-                      <div>
-                        <p className="text-xs text-gray-500">Bedrooms</p>
-                        <p className="font-semibold text-dark-900">{property.beds}</p>
-                      </div>
-                    </div>
-                  )}
-                  {property.baths > 0 && (
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                      <Bath className="w-5 h-5 text-gold-500" />
-                      <div>
-                        <p className="text-xs text-gray-500">Bathrooms</p>
-                        <p className="font-semibold text-dark-900">{property.baths}</p>
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                    <Square className="w-5 h-5 text-gold-500" />
+              <ScrollReveal>
+                <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
-                      <p className="text-xs text-gray-500">Area</p>
-                      <p className="font-semibold text-dark-900">{property.sqft} sqft</p>
+                      <p className="text-sm text-gray-500 mb-1">Asking Price</p>
+                      <p className="text-3xl font-display font-bold text-dark-900">{property.price}</p>
                     </div>
+                    <span className="inline-flex items-center px-3 py-1.5 bg-gold-500/10 text-gold-700 text-sm font-medium rounded-lg border border-gold-500/20">
+                      {property.type}
+                    </span>
                   </div>
-                  {property.garage && (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    {property.beds > 0 && (
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                        <Bed className="w-5 h-5 text-gold-500" />
+                        <div>
+                          <p className="text-xs text-gray-500">Bedrooms</p>
+                          <p className="font-semibold text-dark-900">{property.beds}</p>
+                        </div>
+                      </div>
+                    )}
+                    {property.baths > 0 && (
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                        <Bath className="w-5 h-5 text-gold-500" />
+                        <div>
+                          <p className="text-xs text-gray-500">Bathrooms</p>
+                          <p className="font-semibold text-dark-900">{property.baths}</p>
+                        </div>
+                      </div>
+                    )}
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                      <Building2 className="w-5 h-5 text-gold-500" />
+                      <Square className="w-5 h-5 text-gold-500" />
                       <div>
-                        <p className="text-xs text-gray-500">Parking</p>
-                        <p className="font-semibold text-dark-900">{property.garage}</p>
+                        <p className="text-xs text-gray-500">Area</p>
+                        <p className="font-semibold text-dark-900">{property.sqft} sqft</p>
                       </div>
                     </div>
-                  )}
+                    {property.garage && (
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                        <Building2 className="w-5 h-5 text-gold-500" />
+                        <div>
+                          <p className="text-xs text-gray-500">Parking</p>
+                          <p className="font-semibold text-dark-900">{property.garage}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Description */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
-                <h2 className="font-display text-xl font-bold text-dark-900 mb-4">Description</h2>
-                <p className="text-gray-600 leading-relaxed">{property.description}</p>
-              </div>
+              <ScrollReveal>
+                <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
+                  <h2 className="font-display text-xl font-bold text-dark-900 mb-4">Description</h2>
+                  <p className="text-gray-600 leading-relaxed">{property.description}</p>
+                </div>
+              </ScrollReveal>
 
               {/* Features */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
-                <h2 className="font-display text-xl font-bold text-dark-900 mb-4">Features & Amenities</h2>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {property.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-2.5 p-3 bg-gray-50 rounded-xl">
-                      <CheckCircle2 className="w-4 h-4 text-gold-500 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+              <ScrollReveal>
+                <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
+                  <h2 className="font-display text-xl font-bold text-dark-900 mb-4">Features & Amenities</h2>
+                  <StaggerContainer staggerDelay={0.06}>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {property.features.map((feature) => (
+                        <StaggerItem key={feature}>
+                          <div className="flex items-center gap-2.5 p-3 bg-gray-50 rounded-xl">
+                            <CheckCircle2 className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                            <span className="text-gray-700 text-sm">{feature}</span>
+                          </div>
+                        </StaggerItem>
+                      ))}
                     </div>
-                  ))}
+                  </StaggerContainer>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Property Details */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
-                <h2 className="font-display text-xl font-bold text-dark-900 mb-4">Property Details</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span className="text-gray-500 text-sm">Type</span>
-                    <span className="font-medium text-dark-900 text-sm">{property.type}</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span className="text-gray-500 text-sm">Lot Size</span>
-                    <span className="font-medium text-dark-900 text-sm">{property.lotSize}</span>
-                  </div>
-                  {property.yearBuilt && (
+              <ScrollReveal>
+                <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-lg shadow-black/5">
+                  <h2 className="font-display text-xl font-bold text-dark-900 mb-4">Property Details</h2>
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-gray-500 text-sm">Year Built</span>
-                      <span className="font-medium text-dark-900 text-sm">{property.yearBuilt}</span>
+                      <span className="text-gray-500 text-sm">Type</span>
+                      <span className="font-medium text-dark-900 text-sm">{property.type}</span>
                     </div>
-                  )}
-                  <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span className="text-gray-500 text-sm">Location</span>
-                    <span className="font-medium text-dark-900 text-sm">{property.location.split(',').pop()?.trim()}</span>
+                    <div className="flex justify-between py-2 border-b border-gray-100">
+                      <span className="text-gray-500 text-sm">Lot Size</span>
+                      <span className="font-medium text-dark-900 text-sm">{property.lotSize}</span>
+                    </div>
+                    {property.yearBuilt && (
+                      <div className="flex justify-between py-2 border-b border-gray-100">
+                        <span className="text-gray-500 text-sm">Year Built</span>
+                        <span className="font-medium text-dark-900 text-sm">{property.yearBuilt}</span>
+                      </div>
+                    )}
+                    <div className="flex justify-between py-2 border-b border-gray-100">
+                      <span className="text-gray-500 text-sm">Location</span>
+                      <span className="font-medium text-dark-900 text-sm">{property.location.split(',').pop()?.trim()}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Contact Card */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg shadow-black/5 sticky top-24">
-                <h3 className="font-display font-bold text-dark-900 mb-4">Interested in this property?</h3>
-                <p className="text-gray-500 text-sm mb-6">Our team is ready to help you with viewing arrangements and inquiries.</p>
-                <div className="space-y-3">
-                  <Link
-                    href="/contact"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 bg-gold-500 text-dark-900 font-display font-semibold rounded-xl hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20"
-                  >
-                    <CalendarCheck className="w-5 h-5" /> Schedule Viewing
-                  </Link>
-                  <a
-                    href="tel:+254700000000"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-dark-900 text-dark-900 font-display font-semibold rounded-xl hover:bg-dark-900 hover:text-white transition-all"
-                  >
-                    <Phone className="w-5 h-5" /> Call Agent
-                  </a>
-                  <a
-                    href="mailto:info@aurorahavens.com"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-gray-200 text-gray-700 font-display font-semibold rounded-xl hover:border-gold-500 hover:text-gold-600 transition-all"
-                  >
-                    <Mail className="w-5 h-5" /> Send Email
-                  </a>
-                </div>
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <Shield className="w-4 h-4 text-gold-500" />
-                    <span>Verified listing by Aurora Havens</span>
+              <ScrollReveal direction="right">
+                <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg shadow-black/5 sticky top-24">
+                  <h3 className="font-display font-bold text-dark-900 mb-4">Interested in this property?</h3>
+                  <p className="text-gray-500 text-sm mb-6">Our team is ready to help you with viewing arrangements and inquiries.</p>
+                  <div className="space-y-3">
+                    <Link
+                      href="/contact"
+                      className="w-full flex items-center justify-center gap-2 py-3.5 bg-gold-500 text-dark-900 font-display font-semibold rounded-xl hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20"
+                    >
+                      <CalendarCheck className="w-5 h-5" /> Schedule Viewing
+                    </Link>
+                    <a
+                      href="tel:+254700000000"
+                      className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-navy-500 text-navy-500 font-display font-semibold rounded-xl hover:bg-navy-500 hover:text-white transition-all"
+                    >
+                      <Phone className="w-5 h-5" /> Call Agent
+                    </a>
+                    <a
+                      href="mailto:info@aurorahavens.com"
+                      className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-gray-200 text-gray-700 font-display font-semibold rounded-xl hover:border-gold-500 hover:text-gold-600 transition-all"
+                    >
+                      <Mail className="w-5 h-5" /> Send Email
+                    </a>
+                  </div>
+                  <div className="mt-6 pt-6 border-t border-gray-100">
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <Shield className="w-4 h-4 text-gold-500" />
+                      <span>Verified listing by Aurora Havens</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>

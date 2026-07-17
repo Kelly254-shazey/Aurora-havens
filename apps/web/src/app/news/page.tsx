@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, Calendar, Clock, Tag, TrendingUp } from 'lucide-react';
 import Pagination from '@/components/ui/Pagination';
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal';
 
 const FEATURED = {
   title: 'Aurora Havens Expands to Three New African Markets',
@@ -70,7 +71,7 @@ export default function NewsPage() {
   return (
     <div>
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="relative pt-32 pb-16 sm:pb-20 lg:pb-24 bg-dark-900 overflow-hidden">
+      <section className="relative pt-32 pb-16 sm:pb-20 lg:pb-24 bg-navy-500 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-gold-500/3 rounded-full blur-3xl" />
@@ -81,115 +82,131 @@ export default function NewsPage() {
         }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/20 rounded-full px-4 py-1.5 mb-8">
-            <TrendingUp className="w-4 h-4 text-gold-400" />
-            <span className="text-gold-400 text-sm font-medium">News & Insights</span>
-          </div>
-          <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
-            Latest{' '}
-            <span className="bg-gold-gradient bg-clip-text text-transparent">News</span>
-          </h1>
-          <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Stay updated with the latest from Aurora Havens, including company news,
-            investment insights, foundation impact stories, and industry trends.
-          </p>
+          <ScrollReveal delay={0.1}>
+            <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/20 rounded-full px-4 py-1.5 mb-8">
+              <TrendingUp className="w-4 h-4 text-gold-400" />
+              <span className="text-gold-400 text-sm font-medium">News & Insights</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
+              Latest{' '}
+              <span className="bg-gold-gradient bg-clip-text text-transparent">News</span>
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal delay={0.3}>
+            <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Stay updated with the latest from Aurora Havens, including company news,
+              investment insights, foundation impact stories, and industry trends.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ═══════════════════ FEATURED ARTICLE ═══════════════════ */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-8">
-            <div className="w-8 h-px bg-gold-500" />
-            FEATURED STORY
-            <div className="w-8 h-px bg-gold-500" />
-          </div>
+          <ScrollReveal>
+            <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-8">
+              <div className="w-8 h-px bg-gold-500" />
+              FEATURED STORY
+              <div className="w-8 h-px bg-gold-500" />
+            </div>
+          </ScrollReveal>
 
-          <div className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500 grid lg:grid-cols-2">
-            <div className="relative aspect-video lg:aspect-auto bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center min-h-[300px]">
-              <span className="text-gold-500/15 font-display text-7xl font-bold">AH</span>
-              <span className={`absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-lg border ${CATEGORY_COLORS[FEATURED.category] || 'bg-gray-100 text-gray-600'}`}>
-                {FEATURED.category}
-              </span>
-            </div>
-            <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-dark-900 mb-4 group-hover:text-gold-600 transition-colors leading-tight">
-                {FEATURED.title}
-              </h2>
-              <p className="text-gray-500 leading-relaxed mb-6">{FEATURED.excerpt}</p>
-              <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4" /> {FEATURED.date}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4" /> {FEATURED.readTime}
+          <ScrollReveal>
+            <div className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500 grid lg:grid-cols-2">
+              <div className="relative aspect-video lg:aspect-auto bg-gradient-to-br from-dark-800 to-navy-500 flex items-center justify-center min-h-[300px]">
+                <span className="text-gold-500/15 font-display text-7xl font-bold">AH</span>
+                <span className={`absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-lg border ${CATEGORY_COLORS[FEATURED.category] || 'bg-gray-100 text-gray-600'}`}>
+                  {FEATURED.category}
                 </span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-600">By {FEATURED.author}</span>
-                <Link
-                  href="/news/featured"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600 hover:text-gold-700 transition-colors"
-                >
-                  Read Full Article <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </Link>
+              <div className="p-8 lg:p-12 flex flex-col justify-center">
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-dark-900 mb-4 group-hover:text-gold-600 transition-colors leading-tight">
+                  {FEATURED.title}
+                </h2>
+                <p className="text-gray-500 leading-relaxed mb-6">{FEATURED.excerpt}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4" /> {FEATURED.date}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4" /> {FEATURED.readTime}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-600">By {FEATURED.author}</span>
+                  <Link
+                    href="/news/featured"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600 hover:text-gold-700 transition-colors"
+                  >
+                    Read Full Article <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ═══════════════════ ARTICLES GRID ═══════════════════ */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-4">
-              <div className="w-8 h-px bg-gold-500" />
-              LATEST ARTICLES
-              <div className="w-8 h-px bg-gold-500" />
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-4">
+                <div className="w-8 h-px bg-gold-500" />
+                LATEST ARTICLES
+                <div className="w-8 h-px bg-gold-500" />
+              </div>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+                Recent Posts
+              </h2>
+              <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                Insights, stories, and updates from across Aurora Havens
+              </p>
             </div>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
-              Recent Posts
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Insights, stories, and updates from across Aurora Havens
-            </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {ARTICLES.map((article, index) => (
-              <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500">
-                <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center">
-                  <span className="text-gold-500/15 font-display text-4xl font-bold">AH</span>
-                  <span className={`absolute top-3 left-3 text-xs font-bold px-3 py-1.5 rounded-lg border ${CATEGORY_COLORS[article.category] || 'bg-gray-100 text-gray-600'}`}>
-                    {article.category}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" /> {article.date}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" /> {article.readTime}
+              <StaggerItem key={index}>
+                <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500">
+                  <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-navy-500 flex items-center justify-center">
+                    <span className="text-gold-500/15 font-display text-4xl font-bold">AH</span>
+                    <span className={`absolute top-3 left-3 text-xs font-bold px-3 py-1.5 rounded-lg border ${CATEGORY_COLORS[article.category] || 'bg-gray-100 text-gray-600'}`}>
+                      {article.category}
                     </span>
                   </div>
-                  <h3 className="font-display font-semibold text-lg text-dark-900 mb-2 group-hover:text-gold-600 transition-colors leading-snug">
-                    {article.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{article.excerpt}</p>
-                  <Link
-                    href="/news/article"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600 hover:text-gold-700 transition-colors"
-                  >
-                    Read More <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-                  </Link>
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5" /> {article.date}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" /> {article.readTime}
+                      </span>
+                    </div>
+                    <h3 className="font-display font-semibold text-lg text-dark-900 mb-2 group-hover:text-gold-600 transition-colors leading-snug">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{article.excerpt}</p>
+                    <Link
+                      href="/news/article"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600 hover:text-gold-700 transition-colors"
+                    >
+                      Read More <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
-          <Pagination currentPage={1} totalPages={5} onPageChange={() => {}} />
+          <div className="mt-12">
+            <Pagination currentPage={1} totalPages={5} onPageChange={() => {}} />
+          </div>
         </div>
       </section>
     </div>

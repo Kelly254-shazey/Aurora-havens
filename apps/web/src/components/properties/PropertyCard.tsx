@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { MapPin, Bed, Bath, Square, Heart, Share2 } from 'lucide-react';
-import { formatCurrency } from '@aurora-havens/shared';
+import { formatCurrency } from '@/lib/utils';
 
 interface PropertyCardProps {
   id: string;

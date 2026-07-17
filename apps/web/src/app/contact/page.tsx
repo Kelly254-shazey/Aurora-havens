@@ -6,6 +6,7 @@ import {
   Mail, Phone, MapPin, Clock, Send, MessageCircle,
   ArrowRight, Building2, Globe, CheckCircle,
 } from 'lucide-react';
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -45,7 +46,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="relative pt-32 pb-16 sm:pb-20 lg:pb-24 bg-dark-900 overflow-hidden">
+      <section className="relative pt-32 pb-16 sm:pb-20 lg:pb-24 bg-navy-500 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-gold-500/3 rounded-full blur-3xl" />
@@ -56,18 +57,24 @@ export default function ContactPage() {
         }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/20 rounded-full px-4 py-1.5 mb-8">
-            <MessageCircle className="w-4 h-4 text-gold-400" />
-            <span className="text-gold-400 text-sm font-medium">Get In Touch</span>
-          </div>
-          <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
-            Contact{' '}
-            <span className="bg-gold-gradient bg-clip-text text-transparent">Us</span>
-          </h1>
-          <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Have a question, want to invest, or need help with a property?
-            Our team is here to assist you every step of the way.
-          </p>
+          <ScrollReveal delay={0.1}>
+            <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/20 rounded-full px-4 py-1.5 mb-8">
+              <MessageCircle className="w-4 h-4 text-gold-400" />
+              <span className="text-gold-400 text-sm font-medium">Get In Touch</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
+              Contact{' '}
+              <span className="bg-gold-gradient bg-clip-text text-transparent">Us</span>
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal delay={0.3}>
+            <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Have a question, want to invest, or need help with a property?
+              Our team is here to assist you every step of the way.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -77,17 +84,19 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-4">
-                <div className="w-8 h-px bg-gold-500" />
-                SEND A MESSAGE
-              </div>
-              <h2 className="font-display text-3xl font-bold text-dark-900 mb-6">
-                We&apos;d Love to Hear From You
-              </h2>
-              <p className="text-gray-500 mb-8 leading-relaxed">
-                Fill out the form below and our team will get back to you within 24 hours.
-                For urgent inquiries, please call us directly.
-              </p>
+              <ScrollReveal direction="left">
+                <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-4">
+                  <div className="w-8 h-px bg-gold-500" />
+                  SEND A MESSAGE
+                </div>
+                <h2 className="font-display text-3xl font-bold text-dark-900 mb-6">
+                  We&apos;d Love to Hear From You
+                </h2>
+                <p className="text-gray-500 mb-8 leading-relaxed">
+                  Fill out the form below and our team will get back to you within 24 hours.
+                  For urgent inquiries, please call us directly.
+                </p>
+              </ScrollReveal>
 
               {success ? (
                 <div className="card text-center py-12">
@@ -194,88 +203,96 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Office Card */}
-              <div className="bg-dark-900 rounded-2xl p-8 border border-gold-500/20">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gold-500/10 rounded-xl flex items-center justify-center">
-                    <Building2 className="w-5 h-5 text-gold-500" />
-                  </div>
-                  <h3 className="font-display font-semibold text-white text-lg">Head Office</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-gold-500 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-white font-medium">Westlands Business Park</p>
-                      <p className="text-gray-400 text-sm">3rd Floor, Tower A<br />Westlands, Nairobi, Kenya</p>
+              <StaggerContainer className="space-y-6" staggerDelay={0.15}>
+                {/* Office Card */}
+                <StaggerItem>
+                  <div className="bg-dark-800 rounded-2xl p-8 border border-gold-500/20">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 bg-gold-500/10 rounded-xl flex items-center justify-center">
+                        <Building2 className="w-5 h-5 text-gold-500" />
+                      </div>
+                      <h3 className="font-display font-semibold text-white text-lg">Head Office</h3>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-5 h-5 text-gold-500 flex-shrink-0" />
-                    <div>
-                      <a href="tel:+254700000000" className="text-white font-medium hover:text-gold-400 transition-colors">
-                        +254 700 000 000
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-5 h-5 text-gold-500 flex-shrink-0" />
-                    <div>
-                      <a href="mailto:info@aurorahavens.com" className="text-white font-medium hover:text-gold-400 transition-colors">
-                        info@aurorahavens.com
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Globe className="w-5 h-5 text-gold-500 flex-shrink-0" />
-                    <span className="text-white font-medium">www.aurorahavens.com</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Business Hours */}
-              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gold-500/10 rounded-xl flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-gold-600" />
-                  </div>
-                  <h3 className="font-display font-semibold text-dark-900 text-lg">Business Hours</h3>
-                </div>
-                <div className="space-y-3">
-                  {[
-                    { day: 'Monday - Friday', hours: '8:00 AM - 6:00 PM' },
-                    { day: 'Saturday', hours: '9:00 AM - 1:00 PM' },
-                    { day: 'Sunday', hours: 'Closed' },
-                  ].map((schedule) => (
-                    <div key={schedule.day} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-0">
-                      <span className="text-gray-600 font-medium text-sm">{schedule.day}</span>
-                      <span className={`font-semibold text-sm ${schedule.hours === 'Closed' ? 'text-gray-400' : 'text-dark-900'}`}>
-                        {schedule.hours}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Regional Offices */}
-              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-                <h3 className="font-display font-semibold text-dark-900 text-lg mb-4">Regional Offices</h3>
-                <div className="space-y-3">
-                  {[
-                    { city: 'Lagos, Nigeria', phone: '+234 800 000 0000' },
-                    { city: 'Accra, Ghana', phone: '+233 300 000 000' },
-                    { city: 'Dar es Salaam, Tanzania', phone: '+255 220 000 000' },
-                  ].map((office) => (
-                    <div key={office.city} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-100">
-                      <MapPin className="w-4 h-4 text-gold-500" />
-                      <div>
-                        <p className="text-dark-900 font-medium text-sm">{office.city}</p>
-                        <p className="text-gray-500 text-xs">{office.phone}</p>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-5 h-5 text-gold-500 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-white font-medium">Westlands Business Park</p>
+                          <p className="text-gray-400 text-sm">3rd Floor, Tower A<br />Westlands, Nairobi, Kenya</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Phone className="w-5 h-5 text-gold-500 flex-shrink-0" />
+                        <div>
+                          <a href="tel:+254700000000" className="text-white font-medium hover:text-gold-400 transition-colors">
+                            +254 700 000 000
+                          </a>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Mail className="w-5 h-5 text-gold-500 flex-shrink-0" />
+                        <div>
+                          <a href="mailto:info@aurorahavens.com" className="text-white font-medium hover:text-gold-400 transition-colors">
+                            info@aurorahavens.com
+                          </a>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Globe className="w-5 h-5 text-gold-500 flex-shrink-0" />
+                        <span className="text-white font-medium">www.aurorahavens.com</span>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
+                </StaggerItem>
+
+                {/* Business Hours */}
+                <StaggerItem>
+                  <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 bg-gold-500/10 rounded-xl flex items-center justify-center">
+                        <Clock className="w-5 h-5 text-gold-600" />
+                      </div>
+                      <h3 className="font-display font-semibold text-dark-900 text-lg">Business Hours</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {[
+                        { day: 'Monday - Friday', hours: '8:00 AM - 6:00 PM' },
+                        { day: 'Saturday', hours: '9:00 AM - 1:00 PM' },
+                        { day: 'Sunday', hours: 'Closed' },
+                      ].map((schedule) => (
+                        <div key={schedule.day} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-0">
+                          <span className="text-gray-600 font-medium text-sm">{schedule.day}</span>
+                          <span className={`font-semibold text-sm ${schedule.hours === 'Closed' ? 'text-gray-400' : 'text-dark-900'}`}>
+                            {schedule.hours}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </StaggerItem>
+
+                {/* Regional Offices */}
+                <StaggerItem>
+                  <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <h3 className="font-display font-semibold text-dark-900 text-lg mb-4">Regional Offices</h3>
+                    <div className="space-y-3">
+                      {[
+                        { city: 'Lagos, Nigeria', phone: '+234 800 000 0000' },
+                        { city: 'Accra, Ghana', phone: '+233 300 000 000' },
+                        { city: 'Dar es Salaam, Tanzania', phone: '+255 220 000 000' },
+                      ].map((office) => (
+                        <div key={office.city} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-100">
+                          <MapPin className="w-4 h-4 text-gold-500" />
+                          <div>
+                            <p className="text-dark-900 font-medium text-sm">{office.city}</p>
+                            <p className="text-gray-500 text-xs">{office.phone}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </StaggerItem>
+              </StaggerContainer>
             </div>
           </div>
         </div>
@@ -284,23 +301,27 @@ export default function ContactPage() {
       {/* ═══════════════════ MAP ═══════════════════ */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-4">
-              <div className="w-8 h-px bg-gold-500" />
-              LOCATION
-              <div className="w-8 h-px bg-gold-500" />
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 text-gold-600 font-medium text-sm mb-4">
+                <div className="w-8 h-px bg-gold-500" />
+                LOCATION
+                <div className="w-8 h-px bg-gold-500" />
+              </div>
+              <h2 className="font-display text-3xl font-bold text-dark-900">
+                Find Us
+              </h2>
             </div>
-            <h2 className="font-display text-3xl font-bold text-dark-900">
-              Find Us
-            </h2>
-          </div>
-          <div className="bg-dark-900 rounded-2xl h-96 flex items-center justify-center border border-gold-500/20">
-            <div className="text-center">
-              <MapPin className="w-12 h-12 text-gold-500/30 mx-auto mb-4" />
-              <p className="text-gray-400 font-display font-medium">Interactive Map</p>
-              <p className="text-gray-500 text-sm mt-1">Westlands Business Park, Nairobi</p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="bg-dark-800 rounded-2xl h-96 flex items-center justify-center border border-gold-500/20">
+              <div className="text-center">
+                <MapPin className="w-12 h-12 text-gold-500/30 mx-auto mb-4" />
+                <p className="text-gray-400 font-display font-medium">Interactive Map</p>
+                <p className="text-gray-500 text-sm mt-1">Westlands Business Park, Nairobi</p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
