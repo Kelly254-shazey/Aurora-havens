@@ -8,6 +8,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { BackToTop } from '@/components/ui/BackToTop';
 import { DemoBanner } from '@/components/ui/DemoBanner';
+import { SplashScreen } from '@/components/ui/SplashScreen';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const poppins = Poppins({ subsets: ['latin'], variable: '--font-poppins', weight: ['400', '500', '600', '700'], display: 'swap' });
@@ -83,6 +84,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+        <SplashScreen />
         <Providers>
           <AuthProvider>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-gold-500 focus:text-dark-900 focus:rounded-lg">

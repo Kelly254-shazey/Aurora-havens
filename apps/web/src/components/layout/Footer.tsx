@@ -40,8 +40,8 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden">
-                <img src="/logo.png" alt="Aurora Havens" className="w-12 h-12 object-contain" />
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
+                <img src="/logo.png" alt="Aurora Havens" className="w-14 h-14 object-contain" />
               </div>
               <div>
                 <span className="font-display font-bold text-xl block">Aurora Havens</span>
