@@ -156,16 +156,16 @@ export function Header() {
 
         {/* Main nav */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[72px]">
+          <div className="flex items-center justify-between h-[80px]">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <div className="relative">
-                <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-sm">
-                  <img src="/logo.png" alt="Aurora Havens" className="w-9 h-9 object-contain" />
+                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/logo.png" alt="Aurora Havens" className="w-12 h-12 object-contain" />
                 </div>
               </div>
               <div className="hidden sm:block">
-                <span className="font-display font-bold text-[17px] text-white block leading-tight tracking-tight">
+                <span className="font-display font-bold text-[18px] text-white block leading-tight tracking-tight">
                   Aurora Havens
                 </span>
                 <span className="text-[9px] text-gold-400/50 tracking-[0.25em] uppercase font-semibold">
@@ -364,8 +364,8 @@ export function Header() {
           {/* Mobile header */}
           <div className="flex items-center justify-between px-6 h-[72px] border-b border-white/[0.06]">
             <Link href="/" className="flex items-center gap-2.5" onClick={() => setIsMobileOpen(false)}>
-                <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-sm">
-                  <img src="/logo.png" alt="Aurora Havens" className="w-9 h-9 object-contain" />
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/logo.png" alt="Aurora Havens" className="w-10 h-10 object-contain" />
                 </div>
               <span className="font-display font-bold text-white text-sm">Aurora Havens</span>
             </Link>
