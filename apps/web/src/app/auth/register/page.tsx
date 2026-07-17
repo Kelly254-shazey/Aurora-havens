@@ -56,9 +56,7 @@ export default function RegisterPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 rounded-xl flex items-center justify-center shadow-lg shadow-gold-500/20">
-              <span className="text-dark-900 font-display font-bold text-lg">AH</span>
-            </div>
+            <img src="/logo.png" alt="Aurora Havens" className="w-12 h-12 object-contain" />
             <div className="text-left">
               <span className="font-display font-bold text-xl text-white block leading-tight">Aurora Havens</span>
               <span className="text-[10px] text-gold-400/50 tracking-[0.25em] uppercase font-semibold">Building Prosperity</span>

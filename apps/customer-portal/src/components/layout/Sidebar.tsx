@@ -72,16 +72,12 @@ export function Sidebar() {
       <div className={`flex items-center ${collapsed ? 'justify-center' : 'justify-between'} px-4 h-16 border-b border-white/10`}>
         {!collapsed ? (
           <Link href="/dashboard" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center">
-              <span className="text-dark-900 font-display font-bold text-xs">AH</span>
-            </div>
+            <img src="/logo.png" alt="Aurora Havens" className="w-8 h-8 object-contain" />
             <span className="font-display font-semibold text-sm">Portal</span>
           </Link>
         ) : (
           <Link href="/dashboard" className="flex items-center justify-center" title="Aurora Havens Portal">
-            <div className="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center">
-              <span className="text-dark-900 font-display font-bold text-xs">AH</span>
-            </div>
+            <img src="/logo.png" alt="Aurora Havens" className="w-8 h-8 object-contain" />
           </Link>
         )}
         <button onClick={() => setCollapsed(!collapsed)} className="p-1.5 rounded-lg hover:bg-white/10 transition-colors" aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>

@@ -84,9 +84,7 @@ export default function RegisterPage() {
       <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <div className="w-12 h-12 bg-gold-500 rounded-xl flex items-center justify-center shadow-lg shadow-gold-500/20">
-              <span className="text-dark-900 font-display font-bold text-lg">AH</span>
-            </div>
+            <img src="/logo.png" alt="Aurora Havens" className="w-12 h-12 object-contain" />
             <div className="text-left">
               <span className="font-display font-bold text-xl text-white block leading-tight">Aurora Havens</span>
               <span className="text-[10px] text-gold-400/50 tracking-[0.25em] uppercase font-semibold">Customer Portal</span>

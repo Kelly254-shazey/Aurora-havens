@@ -13,9 +13,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 bg-gold-gradient rounded-xl flex items-center justify-center shadow-lg shadow-gold-500/20">
-                <span className="text-dark-900 font-display font-bold text-lg">AH</span>
-              </div>
+              <img src="/logo.png" alt="Aurora Havens" className="w-11 h-11 object-contain" />
               <div>
                 <span className="font-display font-bold text-xl block">Aurora Havens</span>
                 <span className="text-[10px] text-gold-400/70 tracking-[0.2em] uppercase font-medium">
