@@ -12,6 +12,25 @@ const config: Config = {
         sidebar: { DEFAULT:'#0B1D33', light:'#122B45', hover:'#1A3A5C', active:'#D4AF37' },
       },
       fontFamily: { sans:['Inter','system-ui','sans-serif'], display:['Poppins','system-ui','sans-serif'] },
+      backgroundImage: {
+        'gold-gradient': 'linear-gradient(135deg, #D4AF37 0%, #FFD966 50%, #B8960E 100%)',
+        'dark-gradient': 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #333333 100%)',
+        'hero-gradient': 'linear-gradient(135deg, #000000 0%, #1A1A1A 40%, #2E2500 100%)',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [],

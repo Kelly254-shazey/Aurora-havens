@@ -29,6 +29,15 @@ export default function HomePage() {
       />
       {/* ═══════════════════ HERO ═══════════════════ */}
       <section className="relative min-h-screen flex items-center bg-dark-900 overflow-hidden overflow-x-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80&fit=crop"
+            alt=""
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/90 to-dark-900/70" />
+        </div>
         {/* Decorative elements */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
@@ -158,7 +167,12 @@ export default function HomePage() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gold-500/5 rounded-3xl" />
               <div className="relative aspect-video bg-dark-900 rounded-2xl overflow-hidden border border-gold-500/20 flex items-center justify-center">
-                <div className="text-center">
+                <img
+                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop"
+                  alt="Aurora Havens community"
+                  className="absolute inset-0 w-full h-full object-cover opacity-60"
+                />
+                <div className="relative z-10 text-center">
                   <div className="w-20 h-20 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-gold-500/30 cursor-pointer hover:scale-110 transition-transform">
                     <span className="text-dark-900 text-3xl ml-1">&#9654;</span>
                   </div>
@@ -193,31 +207,28 @@ export default function HomePage() {
                 title: 'Sunset Ridge Villa',
                 location: 'Nairobi, Kenya',
                 price: '$450,000',
-                beds: 4,
-                baths: 3,
-                sqft: '3,500',
+                beds: 4, baths: 3, sqft: '3,500',
                 badge: 'Featured',
                 badgeColor: 'bg-gold-gradient text-dark-900',
+                image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&fit=crop',
               },
               {
                 title: 'Ocean View Penthouse',
                 location: 'Lagos, Nigeria',
                 price: '$680,000',
-                beds: 3,
-                baths: 2,
-                sqft: '2,800',
+                beds: 3, baths: 2, sqft: '2,800',
                 badge: 'New',
                 badgeColor: 'bg-dark-900 text-gold-400',
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&fit=crop',
               },
               {
                 title: 'Savanna Heights Estate',
                 location: 'Accra, Ghana',
                 price: '$320,000',
-                beds: 5,
-                baths: 4,
-                sqft: '4,200',
+                beds: 5, baths: 4, sqft: '4,200',
                 badge: 'Hot',
                 badgeColor: 'bg-gold-500 text-dark-900',
+                image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&fit=crop',
               },
             ].map((property) => (
               <div
@@ -225,9 +236,12 @@ export default function HomePage() {
                 className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 shadow-lg shadow-black/5 hover:shadow-2xl hover:shadow-gold-500/10 transition-all duration-500"
               >
                 <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-dark-900 overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-gold-500/20 font-display text-5xl font-bold">AH</span>
-                  </div>
+                  <img
+                    src={property.image}
+                    alt={property.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <span className={`absolute top-3 left-3 text-xs font-bold px-3 py-1.5 rounded-lg ${property.badgeColor} shadow-lg`}>
                     {property.badge}

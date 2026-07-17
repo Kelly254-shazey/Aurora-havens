@@ -70,12 +70,18 @@ export function Sidebar() {
   return (
     <aside className={`${collapsed ? 'w-[72px]' : 'w-64'} bg-sidebar text-white flex flex-col transition-all duration-300 fixed left-0 top-0 bottom-0 z-30`}>
       <div className={`flex items-center ${collapsed ? 'justify-center' : 'justify-between'} px-4 h-16 border-b border-white/10`}>
-        {!collapsed && (
+        {!collapsed ? (
           <Link href="/dashboard" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gold-gradient rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center">
               <span className="text-dark-900 font-display font-bold text-xs">AH</span>
             </div>
             <span className="font-display font-semibold text-sm">Portal</span>
+          </Link>
+        ) : (
+          <Link href="/dashboard" className="flex items-center justify-center" title="Aurora Havens Portal">
+            <div className="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center">
+              <span className="text-dark-900 font-display font-bold text-xs">AH</span>
+            </div>
           </Link>
         )}
         <button onClick={() => setCollapsed(!collapsed)} className="p-1.5 rounded-lg hover:bg-white/10 transition-colors" aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>

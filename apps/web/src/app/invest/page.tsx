@@ -42,6 +42,7 @@ const OPPORTUNITIES = [
     status: 'Open',
     type: 'Residential',
     description: 'A premium 48-unit residential development in the heart of Westlands with strong rental demand.',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&fit=crop',
   },
   {
     title: 'Lagos Commercial Tower',
@@ -52,6 +53,7 @@ const OPPORTUNITIES = [
     status: 'Open',
     type: 'Commercial',
     description: 'Grade A office space in Lagos prime business district with pre-leased anchor tenants.',
+    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80&fit=crop',
   },
   {
     title: 'Accra Mixed-Use Development',
@@ -62,6 +64,7 @@ const OPPORTUNITIES = [
     status: 'Open',
     type: 'Mixed-Use',
     description: 'Combining retail, residential, and office space in one of Accra fastest-growing neighborhoods.',
+    image: 'https://images.unsplash.com/photo-1582407947092-a5f9c8380be7?w=800&q=80&fit=crop',
   },
   {
     title: 'Mombasa Beach Resort',
@@ -72,6 +75,7 @@ const OPPORTUNITIES = [
     status: 'Limited',
     type: 'Hospitality',
     description: 'Luxury beachfront resort expansion with guaranteed returns from tourism revenue sharing.',
+    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80&fit=crop',
   },
 ];
 
@@ -235,8 +239,13 @@ export default function InvestPage() {
            <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
             {OPPORTUNITIES.map((opp, index) => (
               <div key={index} className="group bg-dark-900 rounded-2xl overflow-hidden border border-gold-500/20 hover:border-gold-500/40 hover:shadow-2xl hover:shadow-gold-500/10 transition-all duration-500">
-                <div className="relative h-48 bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center">
-                  <span className="text-gold-500/15 font-display text-6xl font-bold">AH</span>
+                <div className="relative h-48 bg-gradient-to-br from-dark-800 to-dark-900 overflow-hidden">
+                  <img
+                    src={opp.image}
+                    alt={opp.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                   <div className="absolute top-4 left-4 flex gap-2">
                     <span className="bg-gold-gradient text-dark-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg">
                       {opp.roi} ROI

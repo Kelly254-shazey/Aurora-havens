@@ -38,7 +38,7 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 rounded-xl flex items-center justify-center shadow-lg shadow-gold-500/20">
+            <div className="w-12 h-12 bg-gold-500 rounded-xl flex items-center justify-center shadow-lg shadow-gold-500/20">
               <span className="text-dark-900 font-display font-bold text-lg">AH</span>
             </div>
             <div className="text-left">
@@ -79,11 +79,15 @@ export default function LoginPage() {
               </div>
             </div>
             <button type="submit" disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gold-gradient text-dark-900 font-display font-semibold rounded-xl shadow-xl shadow-gold-500/20 hover:shadow-gold-500/30 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
+              className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gold-500 text-dark-900 font-display font-semibold rounded-xl shadow-lg shadow-gold-500/20 hover:bg-gold-400 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
               {isSubmitting ? <div className="w-5 h-5 border-2 border-dark-900/30 border-t-dark-900 rounded-full animate-spin" /> : <LogIn className="w-5 h-5" />}
               {isSubmitting ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
+          <p className="text-center text-gray-400 text-sm mt-6">
+            Don&apos;t have an account?{' '}
+            <Link href="/auth/register" className="text-gold-400 hover:text-gold-300 font-medium transition-colors">Sign up</Link>
+          </p>
         </div>
         <div className="flex items-center justify-center gap-4 text-xs text-gray-500 mt-6">
           <span className="flex items-center gap-1"><LockIcon className="w-3 h-3" /> SSL Encrypted</span>

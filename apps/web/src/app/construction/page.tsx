@@ -69,6 +69,7 @@ const PROJECTS = [
     progress: 75,
     status: 'On Track',
     completionDate: 'December 2026',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&fit=crop',
   },
   {
     title: 'Accra Mixed-Use Complex',
@@ -77,6 +78,7 @@ const PROJECTS = [
     progress: 45,
     status: 'On Track',
     completionDate: 'March 2027',
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80&fit=crop',
   },
   {
     title: 'Diani Beach Resort Villas',
@@ -85,6 +87,7 @@ const PROJECTS = [
     progress: 30,
     status: 'On Track',
     completionDate: 'June 2027',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80&fit=crop',
   },
 ];
 
@@ -193,8 +196,13 @@ export default function ConstructionPage() {
           <div className="grid md:grid-cols-3 gap-4 sm:gap-8">
             {PROJECTS.map((project, index) => (
               <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500">
-                <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center">
-                  <span className="text-gold-500/15 font-display text-5xl font-bold">AH</span>
+                <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-dark-900 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                   <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-500/90 text-white text-xs font-bold px-2.5 py-1 rounded-lg">
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
                     {project.status}
