@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Mail, Lock, Eye, EyeOff, LogIn, AlertCircle, Shield } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { ScrollReveal, StaggerContainer } from '@/components/ui/ScrollReveal';
+import { motion } from 'framer-motion';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -59,6 +61,7 @@ export default function LoginPage() {
 
       <div className="relative w-full max-w-md">
         {/* Logo */}
+        <ScrollReveal>
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
@@ -70,8 +73,10 @@ export default function LoginPage() {
             </div>
           </Link>
         </div>
+        </ScrollReveal>
 
         {/* Login Card */}
+        <ScrollReveal delay={0.15}>
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
           <div className="text-center mb-8">
             <h1 className="font-display text-2xl font-bold text-white mb-2">Welcome Back</h1>
@@ -170,7 +175,9 @@ export default function LoginPage() {
           </form>
 
         </div>
+        </ScrollReveal>
 
+        <ScrollReveal delay={0.25}>
         <Link href="/auth/admin-login" className="text-xs text-gray-500 hover:text-gold-400 transition-colors block text-center mt-3">
           Admin Login →
         </Link>
@@ -187,6 +194,7 @@ export default function LoginPage() {
             Sign up
           </Link>
         </p>
+        </ScrollReveal>
       </div>
     </div>
   );

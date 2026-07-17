@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Mail, Lock, Eye, EyeOff, Shield, AlertCircle } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { ScrollReveal, StaggerContainer } from '@/components/ui/ScrollReveal';
+import { motion } from 'framer-motion';
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
@@ -34,6 +36,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-dark-900 flex items-center justify-center px-4 py-20">
       <div className="w-full max-w-md">
         {/* Header */}
+        <ScrollReveal>
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gold-500/10 rounded-2xl mb-6">
             <Shield className="w-8 h-8 text-gold-500" />
@@ -41,8 +44,10 @@ export default function AdminLoginPage() {
           <h1 className="font-display text-3xl font-bold text-white mb-2">Admin Access</h1>
           <p className="text-gray-400 text-sm">Authorized personnel only. All access is logged.</p>
         </div>
+        </ScrollReveal>
 
         {/* Form */}
+        <ScrollReveal delay={0.15}>
         <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-8">
           {error && (
             <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-xl mb-6">
@@ -96,12 +101,15 @@ export default function AdminLoginPage() {
             </button>
           </form>
         </div>
+        </ScrollReveal>
 
+        <ScrollReveal delay={0.25}>
         <div className="text-center mt-6">
           <Link href="/auth/login" className="text-sm text-gray-400 hover:text-gold-400 transition-colors">
             ← Back to regular login
           </Link>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

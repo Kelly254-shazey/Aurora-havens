@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Mail, Lock, Eye, EyeOff, User, Phone, UserPlus, AlertCircle, Shield } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { ScrollReveal, StaggerContainer } from '@/components/ui/ScrollReveal';
+import { motion } from 'framer-motion';
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState('');
@@ -54,6 +56,7 @@ export default function RegisterPage() {
 
       <div className="relative w-full max-w-md">
         {/* Logo */}
+        <ScrollReveal>
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
@@ -65,8 +68,10 @@ export default function RegisterPage() {
             </div>
           </Link>
         </div>
+        </ScrollReveal>
 
         {/* Register Card */}
+        <ScrollReveal delay={0.15}>
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
           <div className="text-center mb-8">
             <h1 className="font-display text-2xl font-bold text-white mb-2">Create Account</h1>
@@ -213,9 +218,10 @@ export default function RegisterPage() {
             </button>
           </form>
 
-
         </div>
+        </ScrollReveal>
 
+        <ScrollReveal delay={0.25}>
         <div className="flex items-center justify-center gap-4 text-xs text-gray-500 mt-6">
           <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> SSL Encrypted</span>
           <span className="flex items-center gap-1"><Shield className="w-3 h-3" /> Data Protected</span>
@@ -228,6 +234,7 @@ export default function RegisterPage() {
             Sign in
           </Link>
         </p>
+        </ScrollReveal>
       </div>
     </div>
   );
