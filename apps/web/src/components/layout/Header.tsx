@@ -175,7 +175,7 @@ export function Header() {
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden xl:flex items-center gap-0.5">
+            <nav className="hidden lg:flex items-center gap-0.5">
               {NAV_GROUPS.map((group) => {
                 const active = isActive(group.href || '');
 
@@ -184,7 +184,7 @@ export function Header() {
                     <Link
                       key={group.label}
                       href={group.href!}
-                      className={`relative px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 ${
+                      className={`relative px-2.5 lg:px-3 py-2 text-[12px] lg:text-[13px] font-medium rounded-lg transition-all duration-300 ${
                         active
                           ? 'text-gold-400'
                           : 'text-white/70 hover:text-white'
@@ -206,7 +206,7 @@ export function Header() {
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
                     <button
-                      className={`relative flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 ${
+                      className={`relative flex items-center gap-1 px-2.5 lg:px-3 py-2 text-[12px] lg:text-[13px] font-medium rounded-lg transition-all duration-300 ${
                         active
                           ? 'text-gold-400'
                           : 'text-white/70 hover:text-white'
@@ -267,7 +267,7 @@ export function Header() {
             </nav>
 
             {/* Right actions */}
-            <div className="hidden xl:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-1.5 lg:gap-2">
               <ThemeToggle />
 
               <button
@@ -298,7 +298,7 @@ export function Header() {
 
             {/* Mobile burger */}
             <button
-              className="xl:hidden relative w-11 h-11 flex items-center justify-center text-white/70 hover:text-gold-400 transition-colors"
+              className="lg:hidden relative w-11 h-11 flex items-center justify-center text-white/70 hover:text-gold-400 transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label="Menu"
             >
@@ -345,7 +345,7 @@ export function Header() {
 
       {/* Mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-40 xl:hidden transition-all duration-500 ${
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
           isMobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
