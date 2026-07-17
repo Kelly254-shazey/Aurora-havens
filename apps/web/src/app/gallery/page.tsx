@@ -9,32 +9,46 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/Scr
 const CATEGORIES = ['All', 'Properties', 'Foundation', 'Construction', 'Events', 'Team'];
 
 const GALLERY_ITEMS = [
-  { category: 'Properties', title: 'Sunset Ridge Villa', location: 'Nairobi, Kenya' },
-  { category: 'Properties', title: 'Ocean Breeze Penthouse', location: 'Lagos, Nigeria' },
-  { category: 'Foundation', title: 'Feeding Program - Kibera', location: 'Nairobi, Kenya' },
-  { category: 'Properties', title: 'Golden Heights Estate', location: 'Accra, Ghana' },
-  { category: 'Construction', title: 'Westlands Commercial Plaza', location: 'Nairobi, Kenya' },
-  { category: 'Foundation', title: 'School Supply Distribution', location: 'Kumasi, Ghana' },
-  { category: 'Events', title: 'Investor Gala 2025', location: 'Nairobi, Kenya' },
-  { category: 'Properties', title: 'Lavington Manor', location: 'Nairobi, Kenya' },
-  { category: 'Team', title: 'Annual Strategy Retreat', location: 'Mombasa, Kenya' },
-  { category: 'Foundation', title: 'Medical Camp - Diani', location: 'Mombasa, Kenya' },
-  { category: 'Construction', title: 'Accra Mixed-Use Progress', location: 'Accra, Ghana' },
-  { category: 'Properties', title: 'Kilimani Townhouse', location: 'Nairobi, Kenya' },
-  { category: 'Events', title: 'Foundation Awards Night', location: 'Lagos, Nigeria' },
-  { category: 'Team', title: 'New Office Launch', location: 'Nairobi, Kenya' },
-  { category: 'Foundation', title: 'Women Empowerment Workshop', location: 'Accra, Ghana' },
-  { category: 'Properties', title: 'Cape Coast Luxury Villa', location: 'Cape Coast, Ghana' },
-  { category: 'Construction', title: 'Mombasa Beach Resort', location: 'Diani Beach, Kenya' },
-  { category: 'Team', title: 'Community Outreach Day', location: 'Nairobi, Kenya' },
+  { category: 'Properties', title: 'Sunset Ridge Villa', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop' },
+  { category: 'Properties', title: 'Ocean Breeze Penthouse', location: 'Lagos, Nigeria', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb3?w=600&q=80&fit=crop' },
+  { category: 'Foundation', title: 'Feeding Program - Kibera', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80&fit=crop' },
+  { category: 'Properties', title: 'Golden Heights Estate', location: 'Accra, Ghana', image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80&fit=crop' },
+  { category: 'Construction', title: 'Westlands Commercial Plaza', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&fit=crop' },
+  { category: 'Foundation', title: 'School Supply Distribution', location: 'Kumasi, Ghana', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&fit=crop' },
+  { category: 'Events', title: 'Investor Gala 2025', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop' },
+  { category: 'Properties', title: 'Lavington Manor', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80&fit=crop' },
+  { category: 'Team', title: 'Annual Strategy Retreat', location: 'Mombasa, Kenya', image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&fit=crop' },
+  { category: 'Foundation', title: 'Medical Camp - Diani', location: 'Mombasa, Kenya', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&fit=crop' },
+  { category: 'Construction', title: 'Accra Mixed-Use Progress', location: 'Accra, Ghana', image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80&fit=crop' },
+  { category: 'Properties', title: 'Kilimani Townhouse', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80&fit=crop' },
+  { category: 'Events', title: 'Foundation Awards Night', location: 'Lagos, Nigeria', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop' },
+  { category: 'Team', title: 'New Office Launch', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&fit=crop' },
+  { category: 'Foundation', title: 'Women Empowerment Workshop', location: 'Accra, Ghana', image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80&fit=crop' },
+  { category: 'Properties', title: 'Cape Coast Luxury Villa', location: 'Cape Coast, Ghana', image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80&fit=crop' },
+  { category: 'Construction', title: 'Mombasa Beach Resort', location: 'Diani Beach, Kenya', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&fit=crop' },
+  { category: 'Team', title: 'Community Outreach Day', location: 'Nairobi, Kenya', image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&fit=crop' },
 ];
+
+const ITEMS_PER_PAGE = 9;
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filtered = activeCategory === 'All'
     ? GALLERY_ITEMS
     : GALLERY_ITEMS.filter(item => item.category === activeCategory);
+
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const paginatedItems = filtered.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setCurrentPage(1);
+  };
 
   return (
     <div>
@@ -80,7 +94,7 @@ export default function GalleryPage() {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => handleCategoryChange(cat)}
                   className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
                     activeCategory === cat
                       ? 'bg-navy-500 text-gold-400 shadow-lg shadow-navy-500/20'
@@ -95,7 +109,7 @@ export default function GalleryPage() {
 
           {/* Masonry-style Grid */}
           <StaggerContainer className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-            {filtered.map((item, index) => {
+            {paginatedItems.map((item, index) => {
               const heights = ['h-64', 'h-80', 'h-72', 'h-96', 'h-60', 'h-88'];
               const height = heights[index % heights.length];
 
@@ -104,8 +118,13 @@ export default function GalleryPage() {
                   <div
                     className="group break-inside-avoid rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500 cursor-pointer"
                   >
-                    <div className={`relative ${height} bg-gradient-to-br from-dark-800 to-navy-500 flex items-center justify-center`}>
-                      <span className="text-gold-500/10 font-display text-5xl font-bold">AH</span>
+                    <div className={`relative ${height} bg-gradient-to-br from-dark-800 to-navy-500`}>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                         <span className="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-gold-500/20 text-gold-400 border border-gold-500/20 mb-2">
@@ -129,7 +148,7 @@ export default function GalleryPage() {
           )}
 
           <div className="mt-12">
-            <Pagination currentPage={1} totalPages={5} onPageChange={() => {}} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
           </div>
         </div>
       </section>

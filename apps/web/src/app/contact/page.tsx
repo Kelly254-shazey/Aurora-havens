@@ -206,14 +206,20 @@ export default function ContactPage() {
               <StaggerContainer className="space-y-6" staggerDelay={0.15}>
                 {/* Office Card */}
                 <StaggerItem>
-                  <div className="bg-dark-800 rounded-2xl p-8 border border-gold-500/20">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-10 h-10 bg-gold-500/10 rounded-xl flex items-center justify-center">
-                        <Building2 className="w-5 h-5 text-gold-500" />
+                  <div className="bg-dark-800 rounded-2xl border border-gold-500/20 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80&fit=crop"
+                      alt="Aurora Havens Head Office"
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-8">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 bg-gold-500/10 rounded-xl flex items-center justify-center">
+                          <Building2 className="w-5 h-5 text-gold-500" />
+                        </div>
+                        <h3 className="font-display font-semibold text-white text-lg">Head Office</h3>
                       </div>
-                      <h3 className="font-display font-semibold text-white text-lg">Head Office</h3>
-                    </div>
-                    <div className="space-y-4">
+                      <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <MapPin className="w-5 h-5 text-gold-500 mt-0.5 flex-shrink-0" />
                         <div>
@@ -242,6 +248,7 @@ export default function ContactPage() {
                         <span className="text-white font-medium">www.aurorahavens.com</span>
                       </div>
                     </div>
+                  </div>
                   </div>
                 </StaggerItem>
 
@@ -308,18 +315,39 @@ export default function ContactPage() {
                 LOCATION
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-3xl font-bold text-dark-900">
-                Find Us
+              <h2 className="font-display text-3xl font-bold text-navy-500">
+                Our Location
               </h2>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div className="bg-dark-800 rounded-2xl h-96 flex items-center justify-center border border-gold-500/20">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-gold-500/30 mx-auto mb-4" />
-                <p className="text-gray-400 font-display font-medium">Interactive Map</p>
-                <p className="text-gray-500 text-sm mt-1">Westlands Business Park, Nairobi</p>
-              </div>
+            <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.163912361846!2d36.8065!3d-1.2864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173f0f1e1e1d%3A0x1!2sNairobi%2C+Kenya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
+                width="100%"
+                height="450"
+                style={{ border: 0, borderRadius: '1rem' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Aurora Havens Office Location - Nairobi, Kenya"
+              />
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="mt-8 text-center">
+              <p className="text-gray-500 mb-2">
+                Westlands Business Park, 3rd Floor, Tower A, Westlands, Nairobi, Kenya
+              </p>
+              <a
+                href="https://www.google.com/maps/place/Nairobi,+Kenya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-medium transition-colors"
+              >
+                Get Directions
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </ScrollReveal>
         </div>

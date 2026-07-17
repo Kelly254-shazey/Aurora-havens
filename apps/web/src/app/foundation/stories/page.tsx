@@ -164,11 +164,11 @@ export default function StoriesPage() {
                   <div className="text-xs font-bold text-foundation-hot uppercase tracking-wider mb-1">Program</div>
                   <div className="font-display font-semibold text-navy-500 text-lg">{FEATURED_STORY.program}</div>
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Duration</div>
+                    <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Duration</div>
                     <div className="text-sm text-gray-600 font-medium">8 years of continuous support</div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Outcome</div>
+                    <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Outcome</div>
                     <div className="text-sm text-gray-600 font-medium">Registered nurse giving back to community</div>
                   </div>
                 </div>

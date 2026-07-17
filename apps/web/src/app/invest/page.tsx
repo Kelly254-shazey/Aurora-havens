@@ -197,7 +197,7 @@ export default function InvestPage() {
                 PROCESS
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 How It Works
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -217,7 +217,7 @@ export default function InvestPage() {
                     <div className="w-16 h-16 bg-gold-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold-500 group-hover:shadow-lg group-hover:shadow-gold-500/20 transition-all duration-300">
                       <step.icon className="w-8 h-8 text-gold-600 group-hover:text-dark-900 transition-colors" />
                     </div>
-                    <h3 className="font-display font-semibold text-xl mb-2 text-dark-900">{step.title}</h3>
+                    <h3 className="font-display font-semibold text-xl mb-2 text-navy-500">{step.title}</h3>
                     <p className="text-gray-500 leading-relaxed text-sm">{step.description}</p>
                     {index < STEPS.length - 1 && (
                       <div className="hidden md:block absolute top-1/2 -right-4 w-8 text-gold-300">
@@ -242,7 +242,7 @@ export default function InvestPage() {
                 OPPORTUNITIES
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Investment Opportunities
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -283,7 +283,7 @@ export default function InvestPage() {
                       <h3 className="font-display font-semibold text-xl text-white mb-1 group-hover:text-gold-400 transition-colors">
                         {opp.title}
                       </h3>
-                      <p className="text-gray-400 text-sm mb-4">{opp.location}</p>
+                      <p className="text-gray-500 text-sm mb-4">{opp.location}</p>
                       <p className="text-gray-500 text-sm leading-relaxed mb-5">{opp.description}</p>
                        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-5">
                          <div className="bg-white/5 rounded-xl p-3 text-center">
@@ -321,7 +321,7 @@ export default function InvestPage() {
                 FAQ
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Frequently Asked Questions
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -336,10 +336,10 @@ export default function InvestPage() {
                 <StaggerItem key={index}>
                   <div className="border border-gray-200 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-colors">
                     <button className="w-full flex items-center justify-between p-6 text-left group">
-                      <span className="font-display font-semibold text-dark-900 pr-4 group-hover:text-gold-600 transition-colors">
+                      <span className="font-display font-semibold text-navy-500 pr-4 group-hover:text-gold-600 transition-colors">
                         {faq.question}
                       </span>
-                      <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0 group-hover:text-gold-500 transition-colors" />
+                      <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0 group-hover:text-gold-500 transition-colors" />
                     </button>
                     <div className="px-6 pb-6">
                       <p className="text-gray-500 leading-relaxed">{faq.answer}</p>

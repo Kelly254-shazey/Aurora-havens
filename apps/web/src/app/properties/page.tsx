@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import {
   Search, SlidersHorizontal, MapPin, Bed, Bath, Square,
@@ -7,6 +8,8 @@ import {
 } from 'lucide-react';
 import Pagination from '@/components/ui/Pagination';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal';
+
+const ITEMS_PER_PAGE = 6;
 
 const PROPERTIES = [
   {
@@ -128,14 +131,81 @@ const PROPERTIES = [
 ];
 
 const FILTER_TABS = [
-  { label: 'All', icon: Grid3X3, count: 12 },
-  { label: 'Residential', icon: Home, count: 5 },
-  { label: 'Commercial', icon: Building2, count: 3 },
-  { label: 'Land', icon: LandPlot, count: 2 },
-  { label: 'Luxury', icon: Crown, count: 3 },
+  { label: 'All', icon: Grid3X3 },
+  { label: 'Residential', icon: Home },
+  { label: 'Commercial', icon: Building2 },
+  { label: 'Land', icon: LandPlot },
+  { label: 'Luxury', icon: Crown },
 ];
 
+function parsePrice(price: string): number {
+  return parseInt(price.replace(/[$,]/g, ''), 10);
+}
+
+function parseSqft(sqft: string): number {
+  return parseInt(sqft.replace(/,/g, ''), 10);
+}
+
 export default function PropertiesPage() {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortOption, setSortOption] = useState('Sort by: Featured');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredProperties = useMemo(() => {
+    let results = [...PROPERTIES];
+
+    if (activeFilter !== 'All') {
+      results = results.filter((p) => p.type === activeFilter);
+    }
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      results = results.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.location.toLowerCase().includes(q) ||
+          p.type.toLowerCase().includes(q)
+      );
+    }
+
+    switch (sortOption) {
+      case 'Price: Low to High':
+        results.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+        break;
+      case 'Price: High to Low':
+        results.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+        break;
+      case 'Newest First':
+        results.reverse();
+        break;
+      case 'Largest First':
+        results.sort((a, b) => parseSqft(b.sqft) - parseSqft(a.sqft));
+        break;
+      default:
+        results.sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0));
+        break;
+    }
+
+    return results;
+  }, [activeFilter, searchQuery, sortOption]);
+
+  const totalPages = Math.ceil(filteredProperties.length / ITEMS_PER_PAGE);
+  const paginatedProperties = filteredProperties.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const filterCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: PROPERTIES.length };
+    for (const tab of FILTER_TABS) {
+      if (tab.label !== 'All') {
+        counts[tab.label] = PROPERTIES.filter((p) => p.type === tab.label).length;
+      }
+    }
+    return counts;
+  }, []);
+
   return (
     <div>
       <script
@@ -193,6 +263,11 @@ export default function PropertiesPage() {
                     type="text"
                     placeholder="Search location, property, type..."
                     className="flex-1 min-w-0 bg-transparent text-white placeholder:text-white/30 outline-none text-sm"
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setCurrentPage(1);
+                    }}
                   />
                 </div>
                 <div className="flex items-center gap-2">
@@ -210,28 +285,52 @@ export default function PropertiesPage() {
       </section>
 
       {/* ═══════════════════ FILTERS ═══════════════════ */}
-      <section className="sticky top-[56px] sm:top-[72px] z-30 bg-white border-b border-gray-100 py-4">
+      <section className="sticky top-[88px] z-30 bg-white border-b border-gray-100 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            {/* Mobile dropdown */}
+            <select
+              className="flex sm:hidden w-full border border-gray-200 rounded-xl bg-white text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500"
+              value={activeFilter}
+              onChange={(e) => {
+                setActiveFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+            >
               {FILTER_TABS.map((tab) => (
-                <button
-                  key={tab.label}
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap ${
-                    tab.label === 'All'
-                      ? 'bg-navy-500 text-gold-400 shadow-lg shadow-navy-500/20'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-                >
-                  <tab.icon className="w-4 h-4" />
-                  {tab.label}
-                  <span className={`text-xs px-1.5 py-0.5 rounded-md ${
-                    tab.label === 'All' ? 'bg-gold-500/20 text-gold-400' : 'bg-gray-200 text-gray-500'
-                  }`}>
-                    {tab.count}
-                  </span>
-                </button>
+                <option key={tab.label} value={tab.label}>
+                  {tab.label} ({filterCounts[tab.label]})
+                </option>
               ))}
+            </select>
+
+            {/* Desktop tabs */}
+            <div className="hidden sm:flex items-center gap-2 overflow-x-auto pb-1">
+              {FILTER_TABS.map((tab) => {
+                const isActive = tab.label === activeFilter;
+                return (
+                  <button
+                    key={tab.label}
+                    onClick={() => {
+                      setActiveFilter(tab.label);
+                      setCurrentPage(1);
+                    }}
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                      isActive
+                        ? 'bg-navy-500 text-gold-400 shadow-lg shadow-navy-500/20'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    <tab.icon className="w-4 h-4" />
+                    {tab.label}
+                    <span className={`text-xs px-1.5 py-0.5 rounded-md ${
+                      isActive ? 'bg-gold-500/20 text-gold-400' : 'bg-gray-200 text-gray-500'
+                    }`}>
+                      {filterCounts[tab.label]}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </ScrollReveal>
         </div>
@@ -243,9 +342,16 @@ export default function PropertiesPage() {
           <ScrollReveal>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
               <p className="text-gray-500 font-medium">
-                Showing <span className="text-dark-900 font-semibold">12</span> properties
+                Showing <span className="text-dark-900 font-semibold">{filteredProperties.length}</span> properties
               </p>
-              <select className="px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500">
+              <select
+                className="px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500"
+                value={sortOption}
+                onChange={(e) => {
+                  setSortOption(e.target.value);
+                  setCurrentPage(1);
+                }}
+              >
                 <option>Sort by: Featured</option>
                 <option>Price: Low to High</option>
                 <option>Price: High to Low</option>
@@ -257,7 +363,7 @@ export default function PropertiesPage() {
 
           <StaggerContainer staggerDelay={0.08}>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-              {PROPERTIES.map((property, index) => (
+              {paginatedProperties.map((property, index) => (
                 <StaggerItem key={index}>
                   <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 shadow-lg shadow-black/5 hover:shadow-2xl hover:shadow-gold-500/10 transition-all duration-500">
                     <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-dark-900 overflow-hidden">
@@ -316,7 +422,9 @@ export default function PropertiesPage() {
             </div>
           </StaggerContainer>
 
-          <Pagination currentPage={1} totalPages={5} onPageChange={() => {}} />
+          {totalPages > 1 && (
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+          )}
         </div>
       </section>
 

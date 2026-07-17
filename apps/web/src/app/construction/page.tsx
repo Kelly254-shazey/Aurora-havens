@@ -122,7 +122,7 @@ export default function ConstructionPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
-            <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
               From concept to completion, we bring your dream home to life with quality craftsmanship,
               transparent pricing, and on-time delivery.
             </p>
@@ -140,7 +140,7 @@ export default function ConstructionPage() {
                 PACKAGES
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Construction Packages
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -161,8 +161,8 @@ export default function ConstructionPage() {
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${pkg.popular ? 'bg-gold-500 shadow-lg shadow-gold-500/20' : 'bg-gold-500/10'}`}>
                     <pkg.icon className={`w-7 h-7 ${pkg.popular ? 'text-dark-900' : 'text-gold-600'}`} />
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-dark-900 mb-1">{pkg.name}</h3>
-                  <div className="text-3xl font-display font-bold text-dark-900 mb-2">{pkg.price}</div>
+                  <h3 className="font-display font-bold text-2xl text-navy-500 mb-1">{pkg.name}</h3>
+                  <div className="text-3xl font-display font-bold text-navy-500 mb-2">{pkg.price}</div>
                   <p className="text-gray-500 text-sm mb-6">{pkg.description}</p>
                   <ul className="space-y-3 mb-8">
                     {pkg.features.map((feature, i) => (
@@ -177,7 +177,7 @@ export default function ConstructionPage() {
                     className={`w-full inline-flex items-center justify-center gap-2 py-3.5 font-display font-semibold rounded-xl transition-all duration-300 ${
                       pkg.popular
                         ? 'bg-gold-gradient text-dark-900 shadow-lg shadow-gold-500/20 hover:shadow-gold-500/30'
-                        : 'border-2 border-dark-800 text-dark-900 hover:bg-dark-800 hover:text-white'
+                        : 'border-2 border-dark-800 text-navy-500 hover:bg-dark-800 hover:text-white'
                     }`}
                   >
                     Get Started <ArrowRight className="w-5 h-5" />
@@ -199,7 +199,7 @@ export default function ConstructionPage() {
                 ONGOING
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Current Projects
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -229,7 +229,7 @@ export default function ConstructionPage() {
                       <MapPin className="w-3.5 h-3.5 text-gold-500" />
                       <span>{project.location}</span>
                     </div>
-                    <h3 className="font-display font-semibold text-lg text-dark-900 mb-1">{project.title}</h3>
+                    <h3 className="font-display font-semibold text-lg text-navy-500 mb-1">{project.title}</h3>
                     <p className="text-gray-500 text-sm mb-4">{project.units}</p>
 
                     {/* Progress Bar */}
@@ -247,7 +247,7 @@ export default function ConstructionPage() {
                     </div>
 
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400 flex items-center gap-1.5">
+                      <span className="text-gray-500 flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5" />
                         Est. {project.completionDate}
                       </span>
@@ -289,7 +289,7 @@ export default function ConstructionPage() {
                     <feature.icon className="w-7 h-7 text-gold-500 group-hover:text-dark-900 transition-colors" />
                   </div>
                   <h3 className="font-display font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </StaggerItem>
             ))}

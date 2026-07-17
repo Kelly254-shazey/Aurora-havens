@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Clock, Tag, TrendingUp } from 'lucide-react';
 import Pagination from '@/components/ui/Pagination';
@@ -12,6 +13,7 @@ const FEATURED = {
   date: 'July 10, 2026',
   readTime: '5 min read',
   author: 'Amara Okonkwo',
+  image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop',
 };
 
 const ARTICLES = [
@@ -21,6 +23,7 @@ const ARTICLES = [
     category: 'Investment',
     date: 'July 8, 2026',
     readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop',
   },
   {
     title: 'Foundation Feeding Program Reaches 100,000 Meals Milestone',
@@ -28,6 +31,7 @@ const ARTICLES = [
     category: 'Foundation',
     date: 'July 5, 2026',
     readTime: '3 min read',
+    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fit=crop',
   },
   {
     title: 'Understanding Property Valuation in Emerging African Markets',
@@ -35,6 +39,7 @@ const ARTICLES = [
     category: 'Real Estate',
     date: 'July 2, 2026',
     readTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&fit=crop',
   },
   {
     title: 'New Luxury Development Breaks Ground in Westlands',
@@ -42,6 +47,7 @@ const ARTICLES = [
     category: 'Construction',
     date: 'June 28, 2026',
     readTime: '3 min read',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&fit=crop',
   },
   {
     title: 'How Micro-Investing is Democratizing Real Estate in Africa',
@@ -49,6 +55,7 @@ const ARTICLES = [
     category: 'Investment',
     date: 'June 25, 2026',
     readTime: '5 min read',
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80&fit=crop',
   },
   {
     title: 'Success Story: From Sponsored Student to Software Engineer',
@@ -56,6 +63,7 @@ const ARTICLES = [
     category: 'Foundation',
     date: 'June 20, 2026',
     readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop',
   },
 ];
 
@@ -67,7 +75,16 @@ const CATEGORY_COLORS: Record<string, string> = {
   Construction: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
 };
 
+const ITEMS_PER_PAGE = 6;
+
 export default function NewsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(ARTICLES.length / ITEMS_PER_PAGE);
+  const paginatedArticles = ARTICLES.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
   return (
     <div>
       {/* ═══════════════════ HERO ═══════════════════ */}
@@ -116,8 +133,13 @@ export default function NewsPage() {
 
           <ScrollReveal>
             <div className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500 grid lg:grid-cols-2">
-              <div className="relative aspect-video lg:aspect-auto bg-gradient-to-br from-dark-800 to-navy-500 flex items-center justify-center min-h-[300px]">
-                <span className="text-gold-500/15 font-display text-7xl font-bold">AH</span>
+              <div className="relative aspect-video lg:aspect-auto bg-gradient-to-br from-dark-800 to-navy-500 min-h-[300px]">
+                <img
+                  src={FEATURED.image}
+                  alt={FEATURED.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
                 <span className={`absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-lg border ${CATEGORY_COLORS[FEATURED.category] || 'bg-gray-100 text-gray-600'}`}>
                   {FEATURED.category}
                 </span>
@@ -170,11 +192,16 @@ export default function NewsPage() {
           </ScrollReveal>
 
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-            {ARTICLES.map((article, index) => (
+            {paginatedArticles.map((article, index) => (
               <StaggerItem key={index}>
                 <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500">
-                  <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-navy-500 flex items-center justify-center">
-                    <span className="text-gold-500/15 font-display text-4xl font-bold">AH</span>
+                  <div className="relative aspect-[4/3] bg-gradient-to-br from-dark-800 to-navy-500">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
                     <span className={`absolute top-3 left-3 text-xs font-bold px-3 py-1.5 rounded-lg border ${CATEGORY_COLORS[article.category] || 'bg-gray-100 text-gray-600'}`}>
                       {article.category}
                     </span>
@@ -205,7 +232,7 @@ export default function NewsPage() {
           </StaggerContainer>
 
           <div className="mt-12">
-            <Pagination currentPage={1} totalPages={5} onPageChange={() => {}} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
           </div>
         </div>
       </section>

@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import {
   Calendar, MapPin, ArrowRight, Clock, Users, Heart,
   Stethoscope, GraduationCap, UtensilsCrossed, Star, CheckCircle2,
 } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal';
+import Pagination from '@/components/ui/Pagination';
 
 const UPCOMING_EVENTS = [
   {
@@ -16,6 +18,7 @@ const UPCOMING_EVENTS = [
     status: 'Registration Open',
     icon: Star,
     gradient: 'from-foundation-maroon to-foundation-hot',
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80&fit=crop',
   },
   {
     title: 'Free Medical Camp — Kibera',
@@ -25,6 +28,7 @@ const UPCOMING_EVENTS = [
     status: 'Volunteers Needed',
     icon: Stethoscope,
     gradient: 'from-foundation-hot to-foundation-baby',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&fit=crop',
   },
   {
     title: 'Back-to-School Drive',
@@ -34,6 +38,7 @@ const UPCOMING_EVENTS = [
     status: 'Upcoming',
     icon: GraduationCap,
     gradient: 'from-foundation-baby to-foundation-maroon',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80&fit=crop',
   },
   {
     title: 'Women Empowerment Workshop',
@@ -43,6 +48,7 @@ const UPCOMING_EVENTS = [
     status: 'Registration Open',
     icon: Users,
     gradient: 'from-foundation-hot to-foundation-maroon',
+    image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80&fit=crop',
   },
   {
     title: 'Community Feeding Day',
@@ -52,6 +58,7 @@ const UPCOMING_EVENTS = [
     status: 'Upcoming',
     icon: UtensilsCrossed,
     gradient: 'from-foundation-maroon to-foundation-baby',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&fit=crop',
   },
   {
     title: 'Clean Water Initiative Launch',
@@ -61,6 +68,7 @@ const UPCOMING_EVENTS = [
     status: 'Upcoming',
     icon: Heart,
     gradient: 'from-foundation-baby to-foundation-hot',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80&fit=crop',
   },
 ];
 
@@ -72,6 +80,7 @@ const PAST_EVENTS = [
     date: { month: 'DEC', day: '12' },
     attendees: '250+ guests',
     gradient: 'from-foundation-maroon to-foundation-hot',
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80&fit=crop',
   },
   {
     title: 'Mental Health Awareness Walk',
@@ -80,6 +89,7 @@ const PAST_EVENTS = [
     date: { month: 'OCT', day: '10' },
     attendees: '500 walkers',
     gradient: 'from-foundation-hot to-foundation-baby',
+    image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80&fit=crop',
   },
   {
     title: 'Youth Coding Bootcamp',
@@ -88,10 +98,20 @@ const PAST_EVENTS = [
     date: { month: 'JUL', day: '28' },
     attendees: '80 graduates',
     gradient: 'from-foundation-baby to-foundation-maroon',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80&fit=crop',
   },
 ];
 
+const ITEMS_PER_PAGE = 6;
+
 export default function EventsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(UPCOMING_EVENTS.length / ITEMS_PER_PAGE);
+  const paginatedEvents = UPCOMING_EVENTS.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
   return (
     <div>
       {/* ═══════════════════ HERO ═══════════════════ */}
@@ -149,16 +169,21 @@ export default function EventsPage() {
           </ScrollReveal>
 
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8" staggerDelay={0.1}>
-            {UPCOMING_EVENTS.map((event, index) => (
+            {paginatedEvents.map((event, index) => (
               <StaggerItem key={index}>
                 <div className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-foundation-hot/30 hover:shadow-xl hover:shadow-foundation-hot/5 transition-all duration-500">
-                  <div className={`relative h-48 bg-gradient-to-br ${event.gradient} flex items-center justify-center`}>
-                    <event.icon className="w-16 h-16 text-white/30" />
-                    <div className="absolute top-4 left-4 bg-white rounded-xl px-3 py-2 shadow-lg text-center">
+                  <div className={`relative h-48 bg-gradient-to-br ${event.gradient}`}>
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-white rounded-xl px-3 py-2 shadow-lg text-center z-10">
                       <div className="text-xs font-bold text-foundation-hot leading-none">{event.date.month}</div>
                       <div className="font-display text-2xl font-bold text-navy-500 leading-none mt-1">{event.date.day}</div>
                     </div>
-                    <div className="absolute top-4 right-4 hidden sm:block">
+                    <div className="absolute top-4 right-4 hidden sm:block z-10">
                       <span className="inline-flex items-center gap-1 bg-white/90 text-foundation-maroon text-xs font-semibold px-3 py-1 rounded-full">
                         <Clock className="w-3 h-3" />
                         {event.status}
@@ -182,6 +207,10 @@ export default function EventsPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          <div className="mt-12">
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+          </div>
         </div>
       </section>
 
@@ -208,9 +237,15 @@ export default function EventsPage() {
             {PAST_EVENTS.map((event, index) => (
               <StaggerItem key={index}>
                 <div className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-foundation-hot/5 transition-all duration-500">
-                  <div className={`relative h-32 bg-gradient-to-br ${event.gradient} flex items-center justify-center`}>
+                  <div className={`relative h-32 bg-gradient-to-br ${event.gradient}`}>
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
                     <div className="absolute inset-0 bg-black/10" />
-                    <div className="relative bg-white rounded-xl px-3 py-2 shadow-lg text-center">
+                    <div className="relative bg-white rounded-xl px-3 py-2 shadow-lg text-center z-10">
                       <div className="text-xs font-bold text-foundation-hot leading-none">{event.date.month}</div>
                       <div className="font-display text-xl font-bold text-navy-500 leading-none mt-0.5">{event.date.day}</div>
                     </div>

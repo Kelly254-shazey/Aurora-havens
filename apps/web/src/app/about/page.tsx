@@ -60,7 +60,7 @@ export default function AboutPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
-            <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
               We are a movement dedicated to transforming communities across Africa through
               sustainable development, quality housing, and meaningful social impact.
             </p>
@@ -78,7 +78,7 @@ export default function AboutPage() {
                   <div className="w-8 h-px bg-gold-500" />
                   OUR MISSION
                 </div>
-                <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-6 leading-tight">
+                <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-6 leading-tight">
                   Building Prosperity.{' '}
                   <span className="text-gold-500">Restoring Hope.</span>
                 </h2>
@@ -96,11 +96,11 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                   <div className="flex items-center gap-2">
                     <Target className="w-5 h-5 text-gold-500" />
-                    <span className="font-display font-semibold text-dark-900">Purpose-Driven</span>
+                    <span className="font-display font-semibold text-navy-500">Purpose-Driven</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Globe className="w-5 h-5 text-gold-500" />
-                    <span className="font-display font-semibold text-dark-900">Pan-African</span>
+                    <span className="font-display font-semibold text-navy-500">Pan-African</span>
                   </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
                       <div key={stat.label} className="text-center p-4 rounded-xl bg-white/5 border border-white/5">
                         <stat.icon className="w-6 h-6 text-gold-500 mx-auto mb-2" />
                         <div className="text-2xl font-display font-bold text-white">{stat.value}</div>
-                        <div className="text-xs text-gray-400">{stat.label}</div>
+                        <div className="text-xs text-gray-500">{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                 PRINCIPLES
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Our Core Values
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -157,9 +157,9 @@ export default function AboutPage() {
               <StaggerItem key={index}>
                 <div className="group text-center p-8 rounded-2xl bg-white border border-gray-100 hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 transition-all duration-500">
                   <div className="w-16 h-16 bg-gold-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold-500 group-hover:shadow-lg group-hover:shadow-gold-500/20 transition-all duration-300">
-                    <value.icon className="w-8 h-8 text-gold-600 group-hover:text-dark-900 transition-colors" />
+                    <value.icon className="w-8 h-8 text-gold-600 group-hover:text-navy-500 transition-colors" />
                   </div>
-                  <h3 className="font-display font-semibold text-xl mb-2 text-dark-900">{value.title}</h3>
+                  <h3 className="font-display font-semibold text-xl mb-2 text-navy-500">{value.title}</h3>
                   <p className="text-gray-500 leading-relaxed text-sm">{value.description}</p>
                 </div>
               </StaggerItem>
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 LEADERSHIP
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Meet Our Team
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -194,13 +194,13 @@ export default function AboutPage() {
                   <div className={`w-20 h-20 bg-gradient-to-br ${member.color} rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                     <span className="text-white font-display font-bold text-2xl">{member.initials}</span>
                   </div>
-                  <h3 className="font-display font-semibold text-xl text-dark-900 mb-1">{member.name}</h3>
+                  <h3 className="font-display font-semibold text-xl text-navy-500 mb-1">{member.name}</h3>
                   <p className="text-gold-600 font-medium text-sm mb-4">{member.role}</p>
                   <div className="flex justify-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gold-500 hover:text-dark-900 transition-all cursor-pointer">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gold-500 hover:text-navy-500 transition-all cursor-pointer">
                       <span className="text-xs font-bold">in</span>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:bg-gold-500 hover:text-dark-900 transition-all cursor-pointer">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gold-500 hover:text-navy-500 transition-all cursor-pointer">
                       <span className="text-xs font-bold">tw</span>
                     </div>
                   </div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
                 MILESTONES
                 <div className="w-8 h-px bg-gold-500" />
               </div>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-dark-900 mb-4">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-500 mb-4">
                 Our Journey
               </h2>
               <p className="text-lg text-gray-500 max-w-2xl mx-auto">
@@ -238,7 +238,7 @@ export default function AboutPage() {
                   <div className={`sm:w-1/2 ${index % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12 sm:text-left'} text-left`}>
                     <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 hover:border-gold-500/30 hover:shadow-lg transition-all duration-300">
                       <span className="text-gold-500 font-display font-bold text-lg">{milestone.year}</span>
-                      <h3 className="font-display font-semibold text-dark-900 text-lg mt-1 mb-2">{milestone.title}</h3>
+                      <h3 className="font-display font-semibold text-navy-500 text-lg mt-1 mb-2">{milestone.title}</h3>
                       <p className="text-gray-500 text-sm leading-relaxed">{milestone.description}</p>
                     </div>
                   </div>
@@ -263,7 +263,7 @@ export default function AboutPage() {
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
               Whether you&apos;re an investor, a homebuyer, or a changemaker, there&apos;s a place for you
               at Aurora Havens.
             </p>
@@ -272,7 +272,7 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/properties"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-gradient text-dark-900 font-display font-semibold rounded-xl shadow-xl shadow-gold-500/20 hover:shadow-gold-500/30 hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-gradient text-navy-500 font-display font-semibold rounded-xl shadow-xl shadow-gold-500/20 hover:shadow-gold-500/30 hover:-translate-y-0.5 transition-all duration-300"
               >
                 Explore Properties <ArrowRight className="w-5 h-5" />
               </Link>

@@ -164,7 +164,7 @@ export default function DonatePage() {
 
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 w-full py-4 bg-gold-500 text-navy-500 font-display font-bold text-lg rounded-xl hover:bg-gold-600 transition-all shadow-lg shadow-gold-500/20"
+              className="inline-flex items-center justify-center gap-2 w-full py-4 bg-foundation-hot text-white font-display font-bold text-lg rounded-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all shadow-lg shadow-foundation-hot/20"
             >
               Return to Home
             </Link>
@@ -260,7 +260,7 @@ export default function DonatePage() {
               ))}
             </div>
             <div className="relative max-w-xs">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium pointer-events-none">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">
                 KES
               </span>
               <input
@@ -382,10 +382,10 @@ export default function DonatePage() {
                   <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                     <p className="text-sm font-medium text-navy-500 mb-3">Bank Details</p>
                     <div className="space-y-2 text-sm text-gray-600">
-                      <p><span className="text-gray-400">Bank:</span> KCB</p>
-                      <p><span className="text-gray-400">Account:</span> 12345678</p>
-                      <p><span className="text-gray-400">Name:</span> Aurora Havens Foundation</p>
-                      <p><span className="text-gray-400">Ref:</span> Your Name</p>
+                      <p><span className="text-gray-500">Bank:</span> KCB</p>
+                      <p><span className="text-gray-500">Account:</span> 12345678</p>
+                      <p><span className="text-gray-500">Name:</span> Aurora Havens Foundation</p>
+                      <p><span className="text-gray-500">Ref:</span> Your Name</p>
                     </div>
                   </div>
                 )}
@@ -400,11 +400,11 @@ export default function DonatePage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={!selectedCause || effectiveAmount <= 0 || !selectedMethod}
-                className="w-full py-4 bg-gold-500 text-navy-500 font-display font-bold text-lg rounded-xl hover:bg-gold-600 transition-all shadow-lg shadow-gold-500/20 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold-500 disabled:hover:shadow-lg"
+                className="w-full py-4 bg-foundation-hot text-white font-display font-bold text-lg rounded-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all shadow-lg shadow-foundation-hot/20 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-foundation-hot disabled:hover:shadow-lg"
               >
                 Donate KES {effectiveAmount > 0 ? effectiveAmount.toLocaleString() : '0'}
               </button>
-              <p className="text-xs text-gray-400 flex items-center justify-center gap-4 mt-4">
+              <p className="text-xs text-gray-500 flex items-center justify-center gap-4 mt-4">
                 <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> Secure Payments</span>
                 <span className="flex items-center gap-1"><Shield className="w-3 h-3" /> Encrypted Transactions</span>
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> Transparent Fund Management</span>
