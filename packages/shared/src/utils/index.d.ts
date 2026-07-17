@@ -1,0 +1,16 @@
+export declare function formatCurrency(amount: number, currency?: string): string;
+export declare function formatNumber(num: number): string;
+export declare function formatDate(date: Date | string): string;
+export declare function formatDateTime(date: Date | string): string;
+export declare function formatRelativeTime(date: Date | string): string;
+export declare function slugify(text: string): string;
+export declare function truncate(text: string, length: number): string;
+export declare function generateTicketNumber(): string;
+export declare function validateEmail(email: string): boolean;
+export declare function validatePhone(phone: string): boolean;
+export declare function getInitials(firstName: string, lastName: string): string;
+export declare function debounce<T extends (...args: unknown[]) => unknown>(func: T, wait: number): (...args: Parameters<T>) => void;
+export declare function capitalize(str: string): string;
+export declare function getErrorMessage(error: unknown): string;
+export declare function calculatePercentage(value: number, total: number): number;
+export declare function generatePagination(currentPage: number, totalPages: number): (number | string)[];

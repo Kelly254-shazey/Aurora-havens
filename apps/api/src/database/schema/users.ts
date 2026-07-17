@@ -1,0 +1,26 @@
+import { mysqlTable, varchar, text, boolean, int, timestamp, json, mysqlEnum } from 'drizzle-orm/mysql-core';
+
+export const users = mysqlTable('users', {
+  id: varchar('id', { length: 36 }).notNull().primaryKey(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  password: varchar('password', { length: 255 }).notNull(),
+  firstName: varchar('first_name', { length: 100 }).notNull(),
+  lastName: varchar('last_name', { length: 100 }).notNull(),
+  phone: varchar('phone', { length: 20 }),
+  avatar: text('avatar'),
+  role: mysqlEnum('role', ['SUPER_ADMIN','ADMIN','MANAGER','AGENT','INVESTOR','BUYER','TENANT','DONOR','SELLER','CONTRACTOR','CUSTOMER_SUPPORT','PROPERTY_MANAGER','FOUNDATION_MANAGER']).notNull().default('BUYER'),
+  parentUserId: varchar('parent_user_id', { length: 36 }),
+  isEmailVerified: boolean('is_email_verified').notNull().default(false),
+  isPhoneVerified: boolean('is_phone_verified').notNull().default(false),
+  emailVerificationToken: text('email_verification_token'),
+  passwordResetToken: text('password_reset_token'),
+  passwordResetExpires: timestamp('password_reset_expires'),
+  lastLoginAt: timestamp('last_login_at'),
+  loginAttempts: int('login_attempts').notNull().default(0),
+  lockedUntil: timestamp('locked_until'),
+  isActive: boolean('is_active').notNull().default(true),
+  isDeleted: boolean('is_deleted').notNull().default(false),
+  metadata: json('metadata'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});
